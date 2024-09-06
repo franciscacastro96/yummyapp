@@ -1,0 +1,7 @@
+{
+  "name": "YummyApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
