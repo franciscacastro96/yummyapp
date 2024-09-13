@@ -1,0 +1,86 @@
+<ion-header>
+  <ion-toolbar color="primary">
+     <ion-title>YummyApp</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content contentId="main-content" class="register-content">
+
+
+  <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+    <ion-item>
+      <ion-label position="floating" class="custom-label">Nombre</ion-label>
+      <ion-input formControlName="nombre" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating" class="custom-label">Email</ion-label>
+      <ion-input formControlName="email" type="email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating" class="custom-label">Contraseña</ion-label>
+      <ion-input formControlName="password" type="password"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating" class="custom-label">Confirmar Contraseña</ion-label>
+      <ion-input formControlName="confirmPassword" type="password"></ion-input>
+    </ion-item>
+
+    <ion-button expand="full" color="secondary" type="submit" [disabled]="registerForm.invalid" id="btnregistrar">Registrar</ion-button>
+  </form>
+</ion-content>
+
+<style>
+  .register-content {
+    --background: url('/assets/img/pngwing.com.png') no-repeat center center/cover;
+    background-color: #1a1a1a; /* Color similar al lila */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+    padding: 20px;
+  }
+
+  .welcome-message {
+    margin-bottom: 20px;
+  }
+
+  .welcome-message h1 {
+    color: white;
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 0;
+  }
+
+  .welcome-message p {
+    color: white;
+    font-size: 1.2em;
+  }
+
+  ion-item {
+    --border-color: white;
+    --color-focused: white;
+  }
+
+  .custom-label {
+    color: white;
+  }
+
+  ion-input {
+    color: white;
+  }
+
+  ion-button {
+    margin-top: 20px;
+    
+  }
+
+  #btnregistrar{
+    background-color: #C38Cf1;
+    color: #fff;
+  }
+</style>

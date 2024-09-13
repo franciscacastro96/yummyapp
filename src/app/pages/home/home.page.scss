@@ -1,0 +1,55 @@
+.hero {
+    background-color: #1a1a1a; /* Este es un color lila, ajusta el tono según prefieras */
+    
+    background-image: url('/assets/img/pngwing.com.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  
+    /* Asegura que la imagen ocupe todo el espacio */
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    padding: 20px;
+  
+    h1 {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra para mayor legibilidad */
+    }
+  
+    p {
+      font-size: 1.2rem;
+      line-height: 1.5;
+      margin-bottom: 30px;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    }
+    
+  }
+
+
+
+ion-button {
+    margin-top: 20px; /* Asegura que haya espacio entre el texto y el botón */
+    z-index: 2; /* Asegura que el botón esté encima del contenido de fondo */
+    --background: rgba(255, 255, 255, 0.7); /* Fondo semitransparente para el botón */
+    --color: #000;
+    --border-radius: 25px;
+    padding: 15px 40px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    width: 100%;
+    transition: 0.3s ease;
+
+    &:hover {
+      transform: translateY(-3px);
+    }
+  }
+
+  

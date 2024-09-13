@@ -1,0 +1,21 @@
+
+<ion-header>
+   <ion-toolbar>
+      <ion-title>YummyApp</ion-title>
+      <ion-buttons slot="end">
+        <ion-button routerLink="/user-profile">
+          <ion-icon slot="icon-only" name="person-circle-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+   </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="hero">
+    <h1>Bienvenido a YummyApp</h1>
+    <p>Encuentra recetas deliciosas con lo que tienes en su cocina</p>
+
+    <ion-button (click)="navigateToIngredients()" expand="block" fill="clear" shape="round">
+      ¡A cocinar!
+    </ion-button>
+  </div>
+</ion-content>

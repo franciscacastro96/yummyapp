@@ -1,0 +1,74 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-icon>YammyApp</ion-icon>
+        <ion-buttons slot="end">
+            <ion-button routerLink="/user-profile">
+              <ion-icon slot="icon-only" name="person-circle-outline"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <div class="foto">
+        <ion-img src="/assets/img/20190806162310cazuela-de-pollo.jpg" alt=""></ion-img>
+    </div>
+    <div class="receta">
+        <div class="title">
+            <h1>Cazuela de pollo</h1>
+        </div>
+        <div class="duracion">
+            <p>Duracion: 60 minutos para 5 personas</p>
+        </div>
+        <div class="titleingredientes">
+            <h1>Ingredientes</h1>
+        </div>
+        <div class="ingredientes">
+            <p>
+                5 Papas medianas peladas<br>
+                5 Trozos medianos de zapallo camote<br>
+                2 Cucharadas de aceite<br>
+                5 Trozos de carne de vacuno (tapapecho, osobuco, asado de tira)<br>
+                1 Diente de ajo cortado finamente<br>
+                1/2 Cebolla cortada finamente<br>
+                1/2 Pimentón rojo en tiras<br>
+                Orégano a gusto<br>
+                2 Litros de agua<br>
+                1 Tableta de caldo MAGGI® de carne<br>
+                2 Zanahorias en bastones<br>
+                5 Trozos de choclo<br>
+                1/4 Taza de arroz<br>
+                2 Tazas de porotos verdes en tiras<br>
+                Sal a gusto<br>
+                Pimienta a gusto<br>
+                Comino a gusto<br>
+                Perejil cortado finamente<br>
+            </p>
+        </div>
+        <div class="recetatitle">
+            <h1>¡A cocinar!</h1>
+        </div>
+        <div class="receta">
+            <p>
+                Paso 1<br>
+                
+                    1.En una cacerola mediana a partir de agua fría con un poco de sal cocina las papas con los zapallos durante aproximadamente 15 a 20 minutos hasta cocerlos completamente, que al introducir un cuchillo verifiques su cocción. Una vez listos reserva.<br>
+                
+                Paso 2<br>
+                
+                    2.Aparte, calienta una cacerola con las dos cucharadas de aceite y agrega los trozos de carne para dorarlos por todos sus lados removiendo de vez en cuando cuidadosamente para que no se pegue. Agrega el ajo con la cebolla cortados finamente y el pimentón, vierte toda el agua caliente y condimenta con la Tableta de caldo MAGGI® de carne, orégano, comino, pimienta y un toque de sal.<br>
+                
+                Paso 3<br>
+                
+                    3.Cocina tapado a fuego medio durante 20 minutos aproximados con el objetivo de avanzar la cocción de la carne y dejarla blanda. Luego, agrega las zanahorias con los trozos de choclo y cocina 10 minutos más. Enseguida, agrega el arroz y los porotos verdes, cocina nuevamente durante 15 minutos hasta cocer el arroz y terminar la cocción de la carne y todo lo demás. Agrega las papas y los zapallos para que con el calor del caldo se impregnen sus sabores. Sirve de inmediato.
+                
+            </p>
+        </div>
+    </div>
+</ion-content>
+<ion-footer>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-button (click)="navigateToRecipe()"> Volver </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+</ion-footer>
