@@ -45,8 +45,8 @@ export class RecipesPage implements OnInit {
   ngOnInit() {
   }
 
-  navigateToIngredients(){
-    this.navCtrl.navigateForward('/ingredients');
+  navigateTohome(){
+    this.navCtrl.navigateForward('/home');
   }
 
   navigateToDetail(){
