@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
 
 @Component({
@@ -6,19 +6,11 @@ import { NavController } from '@ionic/angular';
   templateUrl: './details.page.html',
   styleUrls: ['./details.page.scss'],
 })
-export class DetailsPage implements OnInit {
+export class DetailsPage {
+  constructor(private navCtrl: NavController) {}
 
-  constructor(private navCtrl: NavController) { }
-
-  ngOnInit() {
+  // Función para regresar a la página anterior
+  goBack() {
+    this.navCtrl.navigateBack('/recipes'); // Vuelve a la página de recetas
   }
-
-  navigateToRecipe(){
-    this.navCtrl.navigateForward('/recipes');
-  }
-
-  navigateToDetails(){
-    this.navCtrl.navigateForward("/details");
-  }
-
 }

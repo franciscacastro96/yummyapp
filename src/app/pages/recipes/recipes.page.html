@@ -1,7 +1,9 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>¿Que deseas cocinar hoy?</ion-title>
+    <!-- Agregamos el título de WhathaFood en el centro -->
+    <ion-title>WhathaFood</ion-title>
     <ion-buttons slot="end">
+      <!-- Botón para el perfil de usuario -->
       <ion-button routerLink="/user-profile">
         <ion-icon slot="icon-only" name="person-circle-outline"></ion-icon>
       </ion-button>
@@ -12,7 +14,11 @@
 <ion-content [fullscreen]="true" class="recdisplay">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Recipes</ion-title>
+      <ion-title size="large">WhathaFood</ion-title>
+    </ion-toolbar>
+    <!-- Agregamos el subtítulo o párrafo debajo del título -->
+    <ion-toolbar>
+      <p class="subtitulo">Descubre recetas deliciosas y fáciles de preparar.</p>
     </ion-toolbar>
   </ion-header>
 
@@ -24,7 +30,6 @@
     </ion-row>
   </ion-grid>
 </ion-content>
-
 
 <ion-footer>
   <ion-toolbar>
