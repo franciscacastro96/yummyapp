@@ -20,10 +20,10 @@ export class RegisterPage implements OnInit {
 
   ngOnInit() {
     this.registerForm = this.fb.group({
-      nombre: ['', [Validators.required, Validators.minLength(3)]],
+      name: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
-      confirmPassword: ['', Validators.required],}, { validator: this.passwordsMatch });
+       });
   }
 
   passwordsMatch(formGroup: FormGroup) {
@@ -31,14 +31,17 @@ export class RegisterPage implements OnInit {
     return password === confirmPassword ? null : { mismatch: true };
   }
 
-  onRegister() {
+  async onRegister() {
     const user = this.registerForm.value as User;
-    if (this.authService.register(user)) {
-      // Navegar al login después de crear el usuario
-      alert('Usuario creado con éxito');
-      this.navCtrl.navigateBack('/login');
-    } else {
-      alert('El usuario ya está registrado');
+    try {
+      const result = await this.authService.register(user);
+      console.log('Registro exitoso', result);
+    } catch (error) {
+      console.log('Error al registrar', error);
     }
+  }
+
+  goToLogin() {
+    this.navCtrl.navigateForward('/login');
   }
 }
