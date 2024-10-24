@@ -1,0 +1,77 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <!-- Botón para regresar a la página anterior -->
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Agregar Receta</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Formulario para agregar una receta -->
+  <form [formGroup]="recipeForm" (ngSubmit)="submitRecipe()">
+
+    <!-- Campo para el Título -->
+    <ion-item>
+      <ion-label position="floating">Título</ion-label>
+      <ion-input formControlName="title" type="text"></ion-input>
+    </ion-item>
+
+    <!-- Campo para la Descripción -->
+    <ion-item>
+      <ion-label position="floating">Descripción</ion-label>
+      <ion-input formControlName="description" type="text"></ion-input>
+    </ion-item>
+
+    <!-- Campo para los Ingredientes (separados por coma) -->
+    <ion-item>
+      <ion-label position="floating">Ingredientes (separados por coma)</ion-label>
+      <ion-input formControlName="ingredients" type="text"></ion-input>
+    </ion-item>
+
+    <!-- Campo para Lugar de Preparación -->
+    <ion-item>
+      <ion-label position="floating">Lugar de Preparación</ion-label>
+      <ion-input formControlName="preparationLocation" type="text"></ion-input>
+    </ion-item>
+
+    <!-- Campo para la URL de la Imagen -->
+    <ion-item>
+      <ion-label position="floating">URL de la Imagen</ion-label>
+      <ion-input formControlName="imageUrl" type="url"></ion-input>
+    </ion-item>
+
+    <!-- Campo para el Tiempo de Preparación (en minutos) -->
+    <ion-item>
+      <ion-label position="floating">Tiempo de Preparación (en minutos)</ion-label>
+      <ion-input formControlName="preparationTime" type="number"></ion-input>
+    </ion-item>
+
+    <!-- Campo para la Dificultad -->
+    <ion-item>
+      <ion-label>Dificultad</ion-label>
+      <ion-select formControlName="difficulty">
+        <ion-select-option value="Fácil">Fácil</ion-select-option>
+        <ion-select-option value="Intermedia">Intermedia</ion-select-option>
+        <ion-select-option value="Difícil">Difícil</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <!-- Campo para las Porciones -->
+    <ion-item>
+      <ion-label position="floating">Porciones</ion-label>
+      <ion-input formControlName="serves" type="number"></ion-input>
+    </ion-item>
+
+    <!-- Campo para los Pasos de Preparación (separados por coma) -->
+    <ion-item>
+      <ion-label position="floating">Pasos de la Preparación (separados por numero )</ion-label>
+      <ion-textarea formControlName="preparationSteps"></ion-textarea>
+    </ion-item>
+
+    <!-- Botón para enviar el formulario -->
+    <ion-button expand="full" type="submit" [disabled]="recipeForm.invalid">Guardar Receta</ion-button>
+
+  </form>
+</ion-content>

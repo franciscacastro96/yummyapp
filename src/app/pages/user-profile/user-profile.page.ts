@@ -1,9 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavController } from '@ionic/angular';
-import { User } from 'src/app/models/user.models';
-import { AuthService } from 'src/app/services/auth.service';
-
 
 @Component({
   selector: 'app-user-profile',
@@ -11,36 +7,28 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./user-profile.page.scss'],
 })
 export class UserProfilePage implements OnInit {
-  profileForm!: FormGroup;
-  currentUser: User | null = null;
-
-  constructor(
-    private fb: FormBuilder,
-    private authService: AuthService,
-    private navCtrl: NavController
-  ) {}
+  
+  // Asegúrate de que tu formulario esté bien definido
+  profileForm: any; // Esto puede ser un FormGroup si estás usando Reactive Forms
+  
+  constructor(private navCtrl: NavController) {}
 
   ngOnInit() {
-    this.initializeForm();
+    // Aquí inicializas tu formulario y otras cosas si es necesario
   }
 
-  initializeForm() {
-    this.profileForm = this.fb.group({
-      name: [this.currentUser?.name || '', Validators.required],
-      email: [{ value: this.currentUser?.email || '', disabled: true }, Validators.required], // El correo electrónico no se puede cambiar
-      profileImage: [this.currentUser?.profileImage || '']
-    });
+  // Función para navegar a la página de agregar
+  goToAgregar() {
+    this.navCtrl.navigateForward('/agregar'); // Cambia '/agregar' si esta no es la ruta correcta
   }
 
+  // Función para actualizar el perfil
   updateProfile() {
-    if (this.profileForm.valid) {
-
-    }
+    console.log('Perfil actualizado');
   }
 
+  // Función para cerrar sesión
   logout() {
-      //this.authService.logout();
-      this.authService.destoyLocalStorageItem('user');
-      this.navCtrl.navigateForward('/login');
+    console.log('Cerrando sesión');
   }
 }

@@ -4,6 +4,11 @@
       <ion-back-button defaultHref="/home"></ion-back-button> <!-- Botón de volver -->
     </ion-buttons>
     <ion-title>Perfil de Usuario</ion-title>
+    <ion-buttons slot="end"> <!-- Añadir botón al lado derecho -->
+      <ion-button (click)="goToAgregar()"> <!-- Función corregida: goToAgregar -->
+        <ion-icon slot="icon-only" name="add"></ion-icon> <!-- Icono del botón -->
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
