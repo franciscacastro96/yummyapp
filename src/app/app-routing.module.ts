@@ -34,12 +34,13 @@ const routes: Routes = [
   {
     path: 'agregar',
     loadChildren: () => import('./pages/agregar/agregar.module').then(m => m.AgregarPageModule)
-  },  {
+  },
+  {
     path: 'favorites',
     loadChildren: () => import('./pages/favorites/favorites.module').then( m => m.FavoritesPageModule)
   },
   {
-    path: 'edit-recipe',
+    path: 'edit-recipe/:id',
     loadChildren: () => import('./pages/edit-recipe/edit-recipe.module').then( m => m.EditRecipePageModule)
   },
 

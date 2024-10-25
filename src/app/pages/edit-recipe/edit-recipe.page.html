@@ -1,13 +1,56 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>edit-recipe</ion-title>
+    <ion-title>Editar Receta</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">edit-recipe</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <form [formGroup]="recipeForm" (ngSubmit)="saveChanges()">
+    <ion-item>
+      <ion-label position="floating">Título</ion-label>
+      <ion-input formControlName="title" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Descripción</ion-label>
+      <ion-input formControlName="description" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Ingredientes (separados por coma)</ion-label>
+      <ion-input formControlName="ingredients" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Lugar de Preparación</ion-label>
+      <ion-input formControlName="preparationLocation" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Tiempo de Preparación</ion-label>
+      <ion-input formControlName="preparationTime" type="number"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Dificultad</ion-label>
+      <ion-select formControlName="difficulty">
+        <ion-select-option value="Fácil">Fácil</ion-select-option>
+        <ion-select-option value="Intermedia">Intermedia</ion-select-option>
+        <ion-select-option value="Difícil">Difícil</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Porciones</ion-label>
+      <ion-input formControlName="serves" type="number"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Pasos de Preparación</ion-label>
+      <ion-textarea formControlName="preparationSteps"></ion-textarea>
+    </ion-item>
+
+    <ion-button expand="full" type="submit" [disabled]="recipeForm.invalid">Guardar Cambios</ion-button>
+    <ion-button expand="full" color="danger" (click)="deleteRecipe()">Eliminar Receta</ion-button>
+  </form>
 </ion-content>
