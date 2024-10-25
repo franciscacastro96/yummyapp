@@ -36,17 +36,6 @@
       <ion-input formControlName="preparationLocation" type="text"></ion-input>
     </ion-item>
 
-    <!-- Botón para capturar imagen con la cámara o seleccionar desde la galería -->
-    <ion-item>
-      <ion-label position="stacked">Imagen de la receta</ion-label>
-      <ion-button expand="block" (click)="openCamera()">Capturar/Seleccionar Imagen</ion-button>
-    </ion-item>
-
-    <!-- Vista previa de la imagen capturada o seleccionada -->
-    <ion-item *ngIf="imageUrl">
-      <ion-img [src]="imageUrl" alt="Imagen capturada" style="width: 100%; height: auto;"></ion-img>
-    </ion-item>
-
     <!-- Campo para el Tiempo de Preparación (en minutos) -->
     <ion-item>
       <ion-label position="floating">Tiempo de Preparación (en minutos)</ion-label>

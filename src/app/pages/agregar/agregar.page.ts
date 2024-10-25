@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavController } from '@ionic/angular';
 import { RecipeService } from 'src/app/services/recipe.service';
-import { Camera, CameraResultType, CameraSource } from '@capacitor/camera'; // Importar CameraSource
 
 @Component({
   selector: 'app-agregar',
@@ -11,7 +10,6 @@ import { Camera, CameraResultType, CameraSource } from '@capacitor/camera'; // I
 })
 export class AgregarPage implements OnInit {
   recipeForm!: FormGroup;
-  imageUrl: string | undefined; // Añadir una propiedad para almacenar la imagen capturada o seleccionada
 
   constructor(
     private fb: FormBuilder, 
@@ -26,7 +24,6 @@ export class AgregarPage implements OnInit {
       description: ['', Validators.required],
       ingredients: ['', Validators.required],
       preparationLocation: ['', Validators.required],
-      imageUrl: [''],
       status: ['Normal', Validators.required],
       preparationTime: [''],
       difficulty: ['', Validators.required],
@@ -35,62 +32,6 @@ export class AgregarPage implements OnInit {
     });
   }
 
-  // Método para capturar una imagen con la cámara
-  async openCamera() {
-    try {
-      const image = await Camera.getPhoto({
-        quality: 90,
-        allowEditing: false,
-        resultType: CameraResultType.Uri,
-        source: CameraSource.Camera // Solo usar la cámara
-      });
-
-      // Guardar la URL de la imagen capturada
-      this.imageUrl = image.webPath;
-      // Actualiza el valor en el formulario
-      this.recipeForm.patchValue({ imageUrl: this.imageUrl });
-    } catch (error) {
-      console.error('Error al abrir la cámara:', error);
-    }
-  }
-
-  // Método para seleccionar una imagen desde la galería
-  async openGallery() {
-    try {
-      const image = await Camera.getPhoto({
-        quality: 90,
-        allowEditing: false,
-        resultType: CameraResultType.Uri,
-        source: CameraSource.Photos // Solo seleccionar imagen desde la galería
-      });
-
-      // Guardar la URL de la imagen seleccionada
-      this.imageUrl = image.webPath;
-      // Actualiza el valor en el formulario
-      this.recipeForm.patchValue({ imageUrl: this.imageUrl });
-    } catch (error) {
-      console.error('Error al abrir la galería:', error);
-    }
-  }
-
-  // Método para permitir al usuario elegir entre cámara o galería
-  async openCameraOrGallery() {
-    try {
-      const image = await Camera.getPhoto({
-        quality: 90,
-        allowEditing: false,
-        resultType: CameraResultType.Uri,
-        source: CameraSource.Prompt // Muestra un prompt para elegir entre cámara o galería
-      });
-
-      // Guardar la URL de la imagen capturada o seleccionada
-      this.imageUrl = image.webPath;
-      // Actualiza el valor en el formulario
-      this.recipeForm.patchValue({ imageUrl: this.imageUrl });
-    } catch (error) {
-      console.error('Error al abrir la cámara o galería:', error);
-    }
-  }
 
   // Método para enviar el formulario y guardar la receta en Firebase
   submitRecipe() {

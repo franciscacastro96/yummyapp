@@ -3,14 +3,18 @@ import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Recipe } from '../models/recipe.models';
-
+import { AngularFireStorage } from '@angular/fire/compat/storage';
+import { finalize } from 'rxjs/operators'; 
 @Injectable({
   providedIn: 'root'
 })
 export class RecipeService {
   private dbPath = 'recipes'; // Ruta de la base de datos para recetas
 
-  constructor(private db: AngularFireDatabase) {}
+  constructor(
+    private db: AngularFireDatabase,
+    private storage: AngularFireStorage
+  ) {}
 
   // Método para crear una receta
   createRecipe(recipe: Recipe): Promise<void> {
