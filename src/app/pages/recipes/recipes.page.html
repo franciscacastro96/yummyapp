@@ -2,6 +2,9 @@
   <ion-toolbar>
     <!-- Agregamos el título de WhathaFood en el centro -->
     <ion-title>WhathaFood</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
     <ion-buttons slot="end">
       <!-- Botón para el perfil de usuario -->
       <ion-button routerLink="/user-profile">
@@ -25,16 +28,22 @@
   <ion-grid>
     <ion-row>
       <ion-col size="12" size-md="6" *ngFor="let recipe of recipes">
-        <app-recipe-card [recipe]="recipe"></app-recipe-card>
+        <ion-card (click)="viewRecipe(recipe.id)" class="recipe-card">
+          <ion-img [src]="recipe.imageUrl || '/assets/placeholder.png'" class="recipe-image"></ion-img>
+          <ion-card-header>
+            <ion-card-title class="recipe-title">{{ recipe.title }}</ion-card-title>
+            <ion-card-subtitle>{{ recipe.description }}</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <p>⏲ Tiempo: {{ recipe.preparationTime }}</p>
+            <p>🍽 Porciones: {{ recipe.serves }}</p>
+            <p>⭐ Dificultad: {{ recipe.difficulty }}</p>
+          </ion-card-content>
+        </ion-card>
       </ion-col>
     </ion-row>
   </ion-grid>
 </ion-content>
 
 <ion-footer>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-button (click)="navigateTohome()"> Volver </ion-button>
-    </ion-buttons>
-  </ion-toolbar>
 </ion-footer>

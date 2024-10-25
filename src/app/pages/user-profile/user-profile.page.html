@@ -1,40 +1,39 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/home"></ion-back-button> <!-- Botón de volver -->
+      <ion-back-button defaultHref="/home"></ion-back-button>
     </ion-buttons>
     <ion-title>Perfil de Usuario</ion-title>
-    <ion-buttons slot="end"> <!-- Añadir botón al lado derecho -->
-      <ion-button (click)="goToAgregar()"> <!-- Función corregida: goToAgregar -->
-        <ion-icon slot="icon-only" name="add"></ion-icon> <!-- Icono del botón -->
+    <ion-buttons slot="end">
+      <ion-button (click)="goToAgregar()">
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <form [formGroup]="profileForm" (ngSubmit)="updateProfile()">
-    <ion-item>
-      <ion-label position="floating">Nombre</ion-label>
-      <ion-input formControlName="name" type="text"></ion-input>
-    </ion-item>
-
+  <!-- Imagen del perfil o decorativa -->
+  <div class="image-container">
+    <img src="assets/img/usuario.png" alt="Logo" class="profile-image">
+  </div>
+<br>
+  <form [formGroup]="profileForm">
+    <!-- Campo de correo (solo lectura) -->
     <ion-item>
       <ion-label position="floating">Correo Electrónico</ion-label>
       <ion-input formControlName="email" type="email" [disabled]="true"></ion-input>
     </ion-item>
-
-    <ion-item>
-      <ion-label position="floating">URL de Imagen de Perfil</ion-label>
-      <ion-input formControlName="profileImage" type="url"></ion-input>
-    </ion-item>
-
-    <ion-button expand="full" color="primary" type="submit" [disabled]="profileForm.invalid">
-      Actualizar Perfil
-    </ion-button>
   </form>
 
-  <ion-button expand="full" color="danger" (click)="logout()">
+  <!-- Botón para cerrar sesión -->
+  <ion-button expand="full" class="purple-button" (click)="goToAgregar()">
+    Añadir receta
+  </ion-button>
+  <ion-button expand="full" class="purple-button" (click)="goToFavoritos()">
+    Ver favoritos
+  </ion-button>
+  <ion-button expand="full" class="blue-button" (click)="logout()">
     Cerrar Sesión
   </ion-button>
+  
 </ion-content>

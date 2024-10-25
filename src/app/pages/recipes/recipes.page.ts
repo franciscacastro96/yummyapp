@@ -10,13 +10,24 @@ import { NavController } from '@ionic/angular';
 export class RecipesPage implements OnInit {
   recipes: any[] = []; 
 
-  constructor(private navCtrl: NavController, private recipeService: RecipeService) { }
+  constructor(
+    private navCtrl: NavController, 
+    private recipeService: RecipeService) { }
 
   ngOnInit() {
-        // Obtener las recetas desde Firebase
-        this.recipeService.getRecipes().subscribe((data) => {
-          this.recipes = data;
-        });
+    this.recipeService.getRecipes().subscribe((data) => {
+      console.log('Recetas cargadas:', data); // Verifica que cada receta tenga un ID
+      this.recipes = data;
+    });
+  }
+
+  viewRecipe(recipeId: string) {
+    console.log('Navegando a los detalles con ID:', recipeId); // Depurar el ID
+    if (recipeId) {
+      this.navCtrl.navigateForward(`/details/${recipeId}`);
+    } else {
+      console.error('ID de receta no disponible');
+    }
   }
 
   navigateTohome(){
@@ -27,12 +38,4 @@ export class RecipesPage implements OnInit {
     this.navCtrl.navigateForward('/details');
   }
 
-  viewRecipe(recipeId: string){
-    if(recipeId){
-      console.log('Ver receta: ', recipeId)
-    }else{
-      console.error('No hay recetas');
-    }
-    
-  }
 }

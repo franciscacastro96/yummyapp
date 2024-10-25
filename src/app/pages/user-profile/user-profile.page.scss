@@ -11,3 +11,28 @@ ion-item {
 ion-button {
   margin-top: 20px;
 }
+.image-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.profile-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.purple-button {
+  --background: #6a0dad; /* Color morado */
+  --background-hover: #5b0c9a; /* Color al pasar el mouse */
+  --background-activated: #4e097f; /* Color al hacer clic */
+  --color: white; /* Texto en blanco */
+}
+.blue-button {
+  --background: #2196f3; /* Celeste */
+  --background-hover: #1e88e5; /* Celeste oscuro al pasar el mouse */
+  --background-activated: #1976d2; /* Color al hacer clic */
+  --color: white; /* Texto blanco */
+  --border-radius: 8px; /* Esquinas redondeadas */
+}

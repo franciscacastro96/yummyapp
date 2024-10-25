@@ -9,30 +9,38 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
+    loadChildren: () => import('./pages/home/home.module').then(m => m.HomePageModule)
   },
   {
     path: 'recipes',
-    loadChildren: () => import('./pages/recipes/recipes.module').then( m => m.RecipesPageModule)
+    loadChildren: () => import('./pages/recipes/recipes.module').then(m => m.RecipesPageModule)
   },
   {
-    path: 'details',
-    loadChildren: () => import('./pages/details/details.module').then( m => m.DetailsPageModule)
+    path: 'details/:id',  // Modificación: Acepta un ID como parámetro
+    loadChildren: () => import('./pages/details/details.module').then(m => m.DetailsPageModule)
   },
   {
     path: 'user-profile',
-    loadChildren: () => import('./pages/user-profile/user-profile.module').then( m => m.UserProfilePageModule)
+    loadChildren: () => import('./pages/user-profile/user-profile.module').then(m => m.UserProfilePageModule)
   },
   {
     path: 'login',
-    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+    loadChildren: () => import('./pages/login/login.module').then(m => m.LoginPageModule)
   },
   {
     path: 'register',
-    loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)
-  },  {
+    loadChildren: () => import('./pages/register/register.module').then(m => m.RegisterPageModule)
+  },
+  {
     path: 'agregar',
-    loadChildren: () => import('./pages/agregar/agregar.module').then( m => m.AgregarPageModule)
+    loadChildren: () => import('./pages/agregar/agregar.module').then(m => m.AgregarPageModule)
+  },  {
+    path: 'favorites',
+    loadChildren: () => import('./pages/favorites/favorites.module').then( m => m.FavoritesPageModule)
+  },
+  {
+    path: 'edit-recipe',
+    loadChildren: () => import('./pages/edit-recipe/edit-recipe.module').then( m => m.EditRecipePageModule)
   },
 
 ];
