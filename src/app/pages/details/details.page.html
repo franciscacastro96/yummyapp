@@ -1,76 +1,26 @@
 <ion-header>
-    <ion-toolbar>
-      <ion-buttons slot="start">
-        <!-- Botón de volver -->
-        <ion-back-button defaultHref="/recipes"></ion-back-button>
-      </ion-buttons>
-      <ion-title>Whathafood</ion-title>
-      <ion-buttons slot="end">
-        <ion-button routerLink="/user-profile">
-          <ion-icon slot="icon-only" name="person-circle-outline"></ion-icon>
-        </ion-button>
-      </ion-buttons>
-    </ion-toolbar>
-  </ion-header>
-  
-  <ion-content>
-    <div class="foto">
-      <ion-img src="/assets/img/20190806162310cazuela-de-pollo.jpg" alt=""></ion-img>
-    </div>
-    <div class="receta">
-      <div class="title">
-        <h1>Cazuela de pollo</h1>
-      </div>
-      <div class="duracion">
-        <p>Duración: 60 minutos para 5 personas</p>
-      </div>
-      <div class="titleingredientes">
-        <h1>Ingredientes</h1>
-      </div>
-      <div class="ingredientes">
-        <p>
-          5 Papas medianas peladas<br>
-          5 Trozos medianos de zapallo camote<br>
-          2 Cucharadas de aceite<br>
-          5 Trozos de carne de vacuno (tapapecho, osobuco, asado de tira)<br>
-          1 Diente de ajo cortado finamente<br>
-          1/2 Cebolla cortada finamente<br>
-          1/2 Pimentón rojo en tiras<br>
-          Orégano a gusto<br>
-          2 Litros de agua<br>
-          1 Tableta de caldo MAGGI® de carne<br>
-          2 Zanahorias en bastones<br>
-          5 Trozos de choclo<br>
-          1/4 Taza de arroz<br>
-          2 Tazas de porotos verdes en tiras<br>
-          Sal a gusto<br>
-          Pimienta a gusto<br>
-          Comino a gusto<br>
-          Perejil cortado finamente<br>
-        </p>
-      </div>
-      <div class="recetatitle">
-        <h1>¡A cocinar!</h1>
-      </div>
-      <div class="receta">
-        <p>
-          Paso 1<br>
-          1. En una cacerola mediana, cocina las papas con los zapallos durante 15 a 20 minutos. Una vez listos, reserva.<br>
-          Paso 2<br>
-          2. Calienta una cacerola, dora los trozos de carne, agrega ajo, cebolla y pimentón, y condimenta con caldo y especias.<br>
-          Paso 3<br>
-          3. Cocina la carne, agrega zanahorias, choclo, arroz y porotos verdes. Finalmente, agrega las papas y zapallos y sirve de inmediato.<br>
-        </p>
-      </div>
-    </div>
-  </ion-content>
-  
-  <ion-footer>
-    <ion-toolbar>
-      <ion-buttons slot="start">
-        <!-- Botón personalizado para volver -->
-        <ion-button (click)="goBack()">Volver</ion-button>
-      </ion-buttons>
-    </ion-toolbar>
-  </ion-footer>
-  
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/recipes"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ recipe?.title }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="recipe">
+  <div class="foto">
+    <ion-img [src]="recipe?.imageUrl" alt="Imagen de la receta"></ion-img> <!-- Imagen de la receta -->
+  </div>
+  <div class="receta">
+    <h1>{{ recipe?.title }}</h1> <!-- Título de la receta -->
+    <p>Duración: {{ recipe?.preparationTime }} minutos para {{ recipe?.serves }} personas</p> <!-- Duración y porciones -->
+    <h2>Ingredientes</h2>
+    <ul>
+      <li *ngFor="let ingredient of recipe?.ingredients">{{ ingredient }}</li> <!-- Lista de ingredientes -->
+    </ul>
+    <h2>Pasos</h2>
+    <ol>
+      <li *ngFor="let step of recipe?.preparationSteps">{{ step }}</li> <!-- Pasos de preparación -->
+    </ol>
+  </div>
+</ion-content>
