@@ -1,4 +1,7 @@
 <ion-header>
+  <ion-buttons slot="start">
+    <ion-back-button (click)="goBack()"></ion-back-button>
+  </ion-buttons>
   <ion-toolbar>
     <ion-title>Editar Receta</ion-title>
   </ion-toolbar>
@@ -50,7 +53,7 @@
       <ion-textarea formControlName="preparationSteps"></ion-textarea>
     </ion-item>
     
-    <ion-button expand="full" type="submit" [disabled]="recipeForm.invalid">Guardar Cambios</ion-button>
+    <ion-button class="purple-button" expand="full" type="submit" [disabled]="recipeForm.invalid">Guardar Cambios</ion-button>
     <ion-button expand="full" color="danger" (click)="deleteRecipe()">Eliminar Receta</ion-button>
   </form>
 </ion-content>

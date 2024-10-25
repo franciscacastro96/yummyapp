@@ -1,0 +1,42 @@
+.recdisplay{
+    padding: 10px;
+    background-color: #c38cf1; 
+    color: #270840;
+
+    ion-grid{
+        padding: 0 16px;
+        background-color: #1a1a1a;
+    }
+}
+.recdisplay {
+    background-color: #1e1e1e; /* Fondo oscuro para la página */
+  }
+  
+  .recipe-card {
+    margin: 15px;
+    border-radius: 15px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+    background: linear-gradient(135deg, #855185 0%, #7848ac 100%);
+  }
+  
+  .recipe-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+  }
+  
+  .recipe-image {
+    height: 200px;
+    object-fit: cover;
+    border-radius: 15px 15px 0 0;
+  }
+  
+  .recipe-title {
+    font-weight: bold;
+    font-size: 1.4rem;
+    color: #fff;
+  }
+  
+  ion-card-subtitle {
+    color: #fafafa;
+  }

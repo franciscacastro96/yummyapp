@@ -8,7 +8,9 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./recipes.page.scss'],
 })
 export class RecipesPage implements OnInit {
-  recipes: any[] = []; 
+  recipes: any[] = []; // Lista completa de recetas
+  filteredRecipes: any[] = []; // Lista filtrada de recetas
+  searchQuery: string = ''; // Query de búsqueda
 
   constructor(
     private navCtrl: NavController, 
@@ -36,6 +38,14 @@ export class RecipesPage implements OnInit {
 
   navigateToDetail(){
     this.navCtrl.navigateForward('/details');
+  }
+
+  filterRecipes() {
+    const query = this.searchQuery.toLowerCase().trim();
+    this.filteredRecipes = this.recipes.filter((recipe) =>
+      recipe.title.toLowerCase().includes(query) ||
+      recipe.description.toLowerCase().includes(query)
+    );
   }
 
 }

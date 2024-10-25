@@ -43,14 +43,13 @@ export class AgregarPage implements OnInit {
         ...formValues,
         ingredients: formValues.ingredients.split(',').map((item: string) => item.trim()),
         preparationSteps: formValues.preparationSteps.split(',').map((item: string) => item.trim()),
-        id: Date.now().toString(), // Generar un ID único
-        imageUrl: this.imageUrl // Añadir la imagen capturada o seleccionada
+        id: Date.now().toString() 
       };
 
       // Crear la receta en Firebase y redirigir a la página de detalles
       this.recipeService.createRecipe(newRecipe).then(() => {
         console.log('Receta creada con ID:', newRecipe.id); // Verifica que el ID se está generando
-        this.navCtrl.navigateForward(`/details/${newRecipe.id}`); // Redirige a la página de detalles
+        this.navCtrl.navigateRoot('/home');
       }).catch((error) => {
         console.error('Error al crear la receta:', error);
       });

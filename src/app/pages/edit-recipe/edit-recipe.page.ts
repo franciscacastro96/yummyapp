@@ -69,6 +69,10 @@ export class EditRecipePage implements OnInit {
     }
   }
 
+  goBack() {
+    this.navCtrl.navigateBack('/favorites');
+  }
+
 
   
 }
