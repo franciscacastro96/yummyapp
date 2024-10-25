@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavController } from '@ionic/angular';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { RecipeService } from 'src/app/services/recipe.service';
 
 @Component({
   selector: 'app-agregar',
@@ -14,6 +15,7 @@ export class AgregarPage implements OnInit {
   constructor(
     private fb: FormBuilder, 
     private navCtrl: NavController,
+    private recipeService: RecipeService,
     private firestore: AngularFirestore // Inject Firestore
   ) {}
 
@@ -25,10 +27,10 @@ export class AgregarPage implements OnInit {
       ingredients: ['', Validators.required], // Ingresar como una cadena separada por comas
       preparationLocation: ['', Validators.required],
       imageUrl: [''],
-      status: ['Pendiente de probar', Validators.required],
-      preparationTime: [null],
+      status: ['Normal', Validators.required],
+      preparationTime: [''],
       difficulty: ['', Validators.required],
-      serves: [null],
+      serves: [''],
       preparationSteps: [''] // Ingresar como una cadena separada por comas
     });
   }
@@ -36,22 +38,23 @@ export class AgregarPage implements OnInit {
   // Método para enviar el formulario y guardar la receta en Firebase
   submitRecipe() {
     if (this.recipeForm.valid) {
-      const newRecipe = this.recipeForm.value;
+      const formValues = this.recipeForm.value;
 
-      // Convertir ingredientes y pasos de preparación a arrays
-      newRecipe.ingredients = newRecipe.ingredients.split(',').map((item: string) => item.trim());
-      newRecipe.preparationSteps = newRecipe.preparationSteps.split(',').map((item: string) => item.trim());
+      // Crear el objeto de receta con los valores convertidos
+      const newRecipe = {
+        ...formValues,
+        ingredients: formValues.ingredients.split(',').map((item: string) => item.trim()), // Convertir a array
+        preparationSteps: formValues.preparationSteps.split(',').map((item: string) => item.trim()), // Convertir a array
+        id: Date.now().toString() // Generar un ID único
+      };
 
-      // Asignar un ID único a la receta
-      newRecipe.id = Date.now().toString();
-
-      // Guardar la receta en Firebase (Firestore)
-      this.firestore.collection('recipes').add(newRecipe).then(() => {
-        // Navegar de vuelta a la página de recetas después de guardar
-        this.navCtrl.navigateBack('/recipes');
-      }).catch(error => {
-        console.error('Error al guardar la receta: ', error);
+      this.recipeService.createRecipe(newRecipe).then(() => {
+        console.log('Receta creada satisfactoriamente');
+        this.navCtrl.navigateForward('/home'); // Redirigir al home después de crear la receta
+      }).catch((error) => {
+        console.error('Error al crear la receta:', error);
       });
+    
     }
   }
 }
