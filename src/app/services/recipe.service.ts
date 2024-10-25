@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Recipe } from '../models/recipe.models';
 
@@ -8,26 +8,29 @@ import { Recipe } from '../models/recipe.models';
   providedIn: 'root'
 })
 export class RecipeService {
-  private dbPath = 'recipes';
+  private dbPath = 'recipes'; // Ruta de la base de datos para recetas
 
-  constructor(private db: AngularFireDatabase) { }
+  constructor(private db: AngularFireDatabase) {}
 
+  // Método para crear una receta
   createRecipe(recipe: Recipe): Promise<void> {
     const recipeData: Recipe = {
       ...recipe,
-      status: 'Normal'
-    }
+      status: 'Normal' // Establece el estado por defecto como "Normal"
+    };
 
     const key = this.db.list(this.dbPath).push(recipeData).key;
 
-    // Actualizamos el producto para incluir el ID reservado
+    // Actualizamos la receta para incluir el ID generado
     return this.db.object(`${this.dbPath}/${key}`).update({ id: key });
   }
 
+  // Método para obtener una receta por su ID
   getRecipeById(id: string): Observable<Recipe | undefined> {
     return this.db.object<Recipe>(`${this.dbPath}/${id}`).valueChanges();
   }
-    // Obtener todos las recetas
+
+  // Obtener todas las recetas
   getRecipes(): Observable<Recipe[]> {
     return this.db.list(this.dbPath).snapshotChanges().pipe(
       map(changes =>
@@ -35,25 +38,25 @@ export class RecipeService {
           const recipeData = c.payload.val() as Recipe;
           return {
             ...recipeData,
-            id: c.payload.key ?? ''
+            id: c.payload.key ?? '' // Incluye el ID de la receta
           };
         })
       )
     );
   }
 
-  // Método para actualizar el estado de una receta
+  // Método para actualizar el estado de una receta (por ejemplo, marcar como favorita)
   updateFavorite(recipeId: string, newStatus: Recipe['status']): Promise<void> {
     return this.db.object(`${this.dbPath}/${recipeId}`).update({ status: newStatus });
   }
 
-      // Actualizar toda la información de un producto
-    updateRecipe(recipeId: string, updateRecipe: Partial<Recipe>): Promise<void> {
-      return this.db.object(`${this.dbPath}/${recipeId}`).update(updateRecipe);
-    }
+  // Método para actualizar una receta completa
+  updateRecipe(recipeId: string, updateRecipe: Partial<Recipe>): Promise<void> {
+    return this.db.object(`${this.dbPath}/${recipeId}`).update(updateRecipe);
+  }
 
-    //Eliminar receta
-    deleteRecipe(recipeId: string): Promise<void> {
-      return this.db.object(`${this.dbPath}/${recipeId}`).remove();
-    }
+  // Método para eliminar una receta
+  deleteRecipe(recipeId: string): Promise<void> {
+    return this.db.object(`${this.dbPath}/${recipeId}`).remove();
+  }
 }
