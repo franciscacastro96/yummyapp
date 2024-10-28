@@ -36,8 +36,11 @@
 }
 
 ion-item {
-  --border-color: #FFD700;
-  --color-focused: #FFD700;
+  --border-radius: 10px; // Redondeo de esquinas
+  --border-color: #FFD700; // Color del borde
+  --color-focused: #FFD700; // Color cuando el campo está enfocado
+  margin: 0 20px; // Margen lateral de 20px para ambos lados
+  margin-bottom: 10px; // Espacio entre campos
 }
 
 .custom-label {
