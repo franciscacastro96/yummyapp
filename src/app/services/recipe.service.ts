@@ -17,7 +17,7 @@ export class RecipeService {
   ) {}
 
   // Método para crear una receta
-  createRecipe(recipe: Recipe): Promise<void> {
+  createRecipe(recipe: Recipe, mockFile: File): Promise<void> {
     const recipeData: Recipe = {
       ...recipe,
       status: 'Normal' // Establece el estado por defecto como "Normal"
